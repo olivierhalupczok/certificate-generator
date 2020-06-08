@@ -1,0 +1,2 @@
+@media print{body *{visibility:hidden}#section-to-print,#section-to-print *{visibility:visible}#section-to-print{width:100%!important;position:absolute;left:0;top:0}}
+/*# sourceMappingURL=main.42fdb119.chunk.css.map */
