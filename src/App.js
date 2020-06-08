@@ -16,8 +16,8 @@ export default class App extends React.Component {
       achievedPlace: undefined,
     };
   }
-  resign = () => {
-    this.setState(() => ({ stage: -1 }));
+  changeStageFor = (stage) => {
+    this.setState(() => ({ stage }));
   };
   setName = (firstName, lastName) => {
     if (!firstName || !lastName) {
@@ -70,7 +70,10 @@ export default class App extends React.Component {
         <button className="m-2 btn btn-primary" onClick={this.closeModal}>
           Oczywiście!
         </button>
-        <button className="m-2 btn btn-secondary" onClick={this.resign}>
+        <button
+          className="m-2 btn btn-secondary"
+          onClick={() => this.changeStageFor(-1)}
+        >
           Rezygnuje :c
         </button>
       </WelcomeModal>
@@ -94,12 +97,25 @@ export default class App extends React.Component {
         />
       </WelcomeModal>
       {this.state.stage === 4 && (
-        <Diploma
-          firstName={this.state.firstName}
-          lastName={this.state.lastName}
-          contestName={this.state.contestName}
-          achievedPlace={this.state.achievedPlace}
-        />
+        <div>
+          <Diploma
+            firstName={this.state.firstName}
+            lastName={this.state.lastName}
+            contestName={this.state.contestName}
+            achievedPlace={this.state.achievedPlace}
+          />
+          <div className="d-flex mx-auto w-50 justify-content-around">
+            <button
+              className="btn btn-primary"
+              onClick={() => this.changeStageFor(0)}
+            >
+              Jeszcze raz
+            </button>
+            <button className="btn btn-outline-primary" onClick={window.print}>
+              Wydrukuj
+            </button>
+          </div>
+        </div>
       )}
     </div>
   );
